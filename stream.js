@@ -3,6 +3,9 @@ const data = require('./data.json');
 const columns = require('./columns.json');
 const { logMemory } = require('./memory.js');
 
+console.log('==== Start ====');
+logMemory();
+
 const filename = `./output/excel-test.${new Date().toISOString()}.xlsx`;
 const method = 'Streaming';
 
@@ -24,7 +27,8 @@ data.forEach(row => {
 
 // Finished the workbook.
 workbook.commit().then(function() {
-  // the stream has been written
+  console.log('==== End ====');
   logMemory();
+
   console.timeEnd(method);
 });

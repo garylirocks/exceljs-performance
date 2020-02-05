@@ -3,6 +3,9 @@ const data = require('./data.json');
 const columns = require('./columns.json');
 const { logMemory } = require('./memory.js');
 
+console.log('==== Start ====');
+logMemory();
+
 const filename = `./output/excel-test.${new Date().toISOString()}.xlsx`;
 const method = 'Normal';
 
@@ -17,6 +20,8 @@ data.forEach(row => {
 });
 
 workbook.xlsx.writeFile(filename).then(function() {
+  console.log('==== End ====');
   logMemory();
+
   console.timeEnd(method);
 });
